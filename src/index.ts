@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, {  Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { MongooseError } from "mongoose";
@@ -11,7 +11,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (_req: Request, res: Response) => {
+app.get("/", (_, res: Response) => {
   res.json({ message: "Hello World" });
 });
 
