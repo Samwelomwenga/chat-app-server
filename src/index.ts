@@ -1,10 +1,30 @@
+import express, { Request, Response } from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import { MongooseError } from "mongoose";
+import dotenv from "dotenv";
+// import { error } from 'console';
 
-console.log("Hello World sam");
+const app = express();
+dotenv.config();
 
-function multiply(a: number, b: number): number {
-    const result = a * b;
-    console.log(`The result of multiplying ${a} and ${b} is ${result}`);
-    return result;
+app.use(express.json());
+app.use(cors());
+
+app.get("/", (_req: Request, res: Response) => {
+  res.json({ message: "Hello World" });
+});
+
+const PORT = process.env.PORT || 3000;
+const URI = process.env.ATLAS_URI;
+if (!URI) {
+  throw new Error("ATLAS_URI is not defined");
 }
 
-multiply(2, 9);
+app.listen(PORT, () => {
+  console.log("server is running on port 3000");
+});
+mongoose
+  .connect(URI)
+  .then(() => console.log("MongoDB connection established"))
+  .catch((error:MongooseError) => console.log("MongoDB connection failed", error.message));
