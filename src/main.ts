@@ -3,13 +3,14 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { MongooseError } from "mongoose";
 import dotenv from "dotenv";
-// import { error } from 'console';
 
+import userRoute from  "../Routes/userRoute";
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 app.use(cors());
+app.use("/api/users", userRoute);
 
 app.get("/", (_, res: Response) => {
   res.json({ message: "Hello World" });
