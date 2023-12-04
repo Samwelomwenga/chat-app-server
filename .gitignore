@@ -12,10 +12,7 @@ dist/
 dist-ssr
 *.local
 .env
-git rm --cached .env
-.env.development.local
-.env.test.local
-.env.production.local
+
 
 
 # Editor directories and files
