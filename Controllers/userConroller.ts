@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 import { z } from "zod";
 
 import userModel from "../Models/userModel";
@@ -11,9 +11,9 @@ const schema = z.object({
   password: z.string().min(8).max(20),
 });
 export type UserType = {
-  name: String;
-  email: String;
-  password: String;
+  name: string;
+  email: string;
+  password: string;
 };
 const registerUser = async (req: Request, res: Response) => {
   const { name, email, password }: UserType = req.body;

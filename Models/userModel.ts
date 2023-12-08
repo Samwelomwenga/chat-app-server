@@ -13,7 +13,7 @@ const userSchema:Schema = new mongoose.Schema<Iuser>(
       minlength: 3,
       maxlength: 20,
     },
-    password: { type: String, required: true, minlength: 8, maxlength: 1024 },
+    password: { type: String, required: true, minlength: 8, maxlength: 1024},
   },
   {
     timestamps: true,
