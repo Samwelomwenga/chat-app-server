@@ -1,13 +1,9 @@
 import mongoose,{Schema,Document} from "mongoose";
+import { UserType } from "../Controllers/userConroller";
 
-interface Iuser extends Document{
-    name:string;
-    email:string;
-    password:string;
+interface Iuser extends Document,UserType{}
 
-}
-
-const userSchema:Schema = new mongoose.Schema(
+const userSchema:Schema = new mongoose.Schema<Iuser>(
   {
     name: { type: String, required: true, minlength: 3, maxlength: 30 },
     email: {
@@ -15,7 +11,7 @@ const userSchema:Schema = new mongoose.Schema(
       required: true,
       unique: true,
       minlength: 3,
-      maxlength: 254,
+      maxlength: 20,
     },
     password: { type: String, required: true, minlength: 8, maxlength: 1024 },
   },
