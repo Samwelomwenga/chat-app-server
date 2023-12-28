@@ -8,19 +8,19 @@ const createMessage = async (req: Request, res: Response) => {
         const newMessage =await message.save();
         res.status(200).json(newMessage);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json( error);
     }
     }
 
 
 
 const getMessages = async (req: Request, res: Response) => {
-    const {chatId} = req.body;
+    const {chatId} = req.params;
   try {
     const messages = await messageModel.find({chatId});
     res.status(200).json({ messages });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json(error);
   }
 };
  export {createMessage,getMessages};

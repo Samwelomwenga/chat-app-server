@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const messageSchema= new mongoose.Schema({
-    conversationId:{
+    chatId:{
         type:String,
     },
-    sender:{
+    senderId:{
         type:String,
     },
     text:{
